@@ -9,7 +9,6 @@ with open('S&P500HistoricalComponents.csv', 'r' ) as fr:
 		temp = row[1].rsplit(",")
 		for ticker in temp:
 			if EveryStockInSP.count(ticker) < 1:
-				print(ticker)
 				EveryStockInSP.append(ticker)
 
 EveryStockInSP.pop(0)
