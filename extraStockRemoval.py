@@ -4,7 +4,7 @@ import os
 filenameEnding = ".us.txt"
 
 original = "/Users/jacknewman/Documents/GitHub/ML_Stock_Picker/stockPriceData/"
-new = "/Users/jacknewman/Documents/GitHub/ML_Stock_Picker/S&PHistoricalStockPrice"
+new = "/Users/jacknewman/Documents/GitHub/ML_Stock_Picker/S&PHistoricalStockPrice/"
 
 with open('S&PList.txt') as file:
 	for line in file:
