@@ -1,10 +1,25 @@
-import datetime
+import csv
 
-year = 1998
+i = 1999
+while i < 2020:
+    year = str(i)
+    SPList = []
+    found = False
 
-def get_day(year):
-    d = datetime.datetime(year, 6, 1)
-    offset = 1-d.weekday() #weekday = 1 means tuesday
-    if offset < 0:
-        offset+=7
-    return d+datetime.timedelta(offset)
+    with open('SP500HistoricalComponents.csv', 'r') as fr:
+        reader = csv.reader(fr)
+        for row in reader:
+            if not found:
+                if year in row[0]:
+                    temp = row[1].rsplit(',')
+                    found = True
+                    for ticker in temp:
+                        SPList.append(ticker)
+
+
+
+    with open('SPList' + year + '.txt', 'w') as nf:
+        for stock in SPList:
+            nf.write(stock + '\n')
+            
+    i+=1
