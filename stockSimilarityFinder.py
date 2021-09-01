@@ -20,8 +20,6 @@ while i < 2020:
                     for ticker in temp:
                         SPList.append(ticker)
 
-
-
     with open('SPList' + year + '.txt', 'w') as nf:
         for stock in SPList:
             nf.write(stock + '\n')
