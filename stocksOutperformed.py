@@ -15,7 +15,7 @@ def FindStocksThatOutperformed(start, end, interval):
         endingPrice = 0
         startOfYear = str(start)+"-01"
         endOfYear = str(end)+"-01"
-        with open(line.lower()+".csv", 'r') as fr:
+        with open(line.rstrip().lower()+".csv", 'r') as fr:
             reader = csv.reader(fr)
             for row in reader:
                 if not foundStart:
