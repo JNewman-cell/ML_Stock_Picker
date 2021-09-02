@@ -1,4 +1,5 @@
 import csv
+import os
 from stockComparisonFinder import FindContinuousStocks
 
 def FindStocksThatOutperformed(start, end, interval):
@@ -15,19 +16,21 @@ def FindStocksThatOutperformed(start, end, interval):
         endingPrice = 0
         startOfYear = str(start)+"-01"
         endOfYear = str(end)+"-01"
-        with open(line.rstrip().lower()+".csv", 'r') as fr:
-            reader = csv.reader(fr)
-            for row in reader:
-                if not foundStart:
-                    if startOfYear in row[0]:
-                        startingPrice = float(row[2])
-                        foundStart = True
-            for row in reader:
-                if not foundEnd:
-                    if endOfYear in row[0]:
-                        endingPrice = float(row[2])
-                        foundEnd = True
-        if endingPrice/startingPrice > 1.1:
-            outperformers.append(line)
+        if os.path.exists("SP500HistoricalStockPrice/"+line.rstrip().lower()+".us.csv"):
+            with open("SP500HistoricalStockPrice/"+line.rstrip().lower()+".us.csv", 'r') as fr:
+                reader = csv.reader(fr)
+                for row in reader:
+                    if not foundStart:
+                        if startOfYear in row[0]:
+                            startingPrice = float(row[2])
+                            foundStart = True
+                for row in reader:
+                    if not foundEnd:
+                        if endOfYear in row[0]:
+                            endingPrice = float(row[2])
+                            foundEnd = True
+            if startingPrice != 0:
+                if endingPrice/startingPrice > 1.1:
+                    outperformers.append(line)
 
     return list(outperformers)
