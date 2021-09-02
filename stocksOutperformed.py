@@ -1,15 +1,11 @@
 import csv
+from stockComparisonFinder import FindContinuousStocks
 
 def FindStocksThatOutperformed(start, end, interval):
-    startYear = start
-    endYear = end
-    timeInterval = interval
 
-    from stockComparisonFinder import FindContinuousStocks
+    FindContinuousStocks(start, end, interval)
 
-    FindContinuousStocks(startYear, endYear, timeInterval)
-
-    SPfile = open(str(startYear)+"-"+str(endYear)+".txt", 'r')
+    SPfile = open(str(start)+"-"+str(end)+"commonStocks.txt", 'r')
     dict = SPfile.readlines()
     outperformers = []
     for line in dict:
@@ -17,8 +13,8 @@ def FindStocksThatOutperformed(start, end, interval):
         foundEnd = False
         startingPrice = 0
         endingPrice = 0
-        startOfYear = str(startYear)+"-01"
-        endOfYear = str(endYear)+"-01"
+        startOfYear = str(start)+"-01"
+        endOfYear = str(end)+"-01"
         with open(line.lower()+".csv", 'r') as fr:
             reader = csv.reader(fr)
             for row in reader:
@@ -34,6 +30,4 @@ def FindStocksThatOutperformed(start, end, interval):
         if endingPrice/startingPrice > 1.1:
             outperformers.append(line)
 
-    with open('SPOutperformers' + startYear + '-' + endYear + '.txt', 'w') as nf:
-            for stock in outperformers:
-                nf.write(stock + '\n')
+    return list(outperformers)
