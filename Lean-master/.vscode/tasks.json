@@ -1,0 +1,55 @@
+{
+    /*
+        VS Code Tasks for the LEAN engine
+        In order to use the build tasks you need msbuild on your system path.
+    */
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "/p:Configuration=Debug",
+                "/p:DebugType=portable",
+                "/p:WarningLevel=1"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "rebuild",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "--no-incremental",
+                "/p:Configuration=Debug",
+                "/p:DebugType=portable",
+                "/p:WarningLevel=1"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "clean",
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
