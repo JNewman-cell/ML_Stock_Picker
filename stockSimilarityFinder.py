@@ -1,3 +1,4 @@
+# creates a file for stocks that continued to be in the S&P 500 yearly
 import csv
 
 i = 1996
@@ -24,7 +25,7 @@ while i < 2020:
         for stock in SPList:
             nf.write(stock + '\n')
 
-    #Q1 Changes to the SP
+    # Q1 Changes to the SP
     '''
     with open('SP500HistoricalComponents.csv', 'r') as fr:
         reader = csv.reader(fr)
@@ -41,7 +42,7 @@ while i < 2020:
             nf.write(stock + '\n')
     '''
 
-    #Q2 Changes to the SP
+    # Q2 Changes to the SP
     '''
     with open('SP500HistoricalComponents.csv', 'r') as fr:
         reader = csv.reader(fr)
@@ -58,7 +59,7 @@ while i < 2020:
             nf.write(stock + '\n')
     '''
 
-    #Q3 Changes to the SP
+    # Q3 Changes to the SP
     '''
     with open('SP500HistoricalComponents.csv', 'r') as fr:
         reader = csv.reader(fr)
@@ -75,7 +76,7 @@ while i < 2020:
             nf.write(stock + '\n')
     '''
 
-    #Q4 Changes to the SP
+    # Q4 Changes to the SP
     '''
     with open('SP500HistoricalComponents.csv', 'r') as fr:
         reader = csv.reader(fr)
@@ -91,5 +92,5 @@ while i < 2020:
         for stock in SPList:
             nf.write(stock + '\n')
     '''
-            
-    i+=1
+
+    i += 1
